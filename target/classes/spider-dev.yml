@@ -1,0 +1,29 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8090
+  minThreads: 100
+
+  adminConnectors:
+    - type: http
+      port: 25006
+
+logging:
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+  loggers:
+    com.flipkart: INFO
+    org.hibernate.SQL: ERROR
+
+  appenders:
+    - type: console
+    - type: file
+      currentLogFilename: /var/log/flipkart/supply-chain/fk-ekl-hubsystem/hubsystem.log
+      threshold: ALL
+      archive: true
+      archivedLogFilenamePattern: /var/log/flipkart/supply-chain/fk-ekl-hubsystem/hubsystem-%d{yyyy-MM-dd}.log
+      archivedFileCount: 3
+      timeZone: IST
+      logFormat: "%highlight(%-5level) [%date] [%thread] [%cyan(%logger{0})]: %message%n"
+
